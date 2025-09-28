@@ -39,6 +39,6 @@ int main() {
             printf("%d ", arr[i]);
         }
     } else {
-        printf("The number does not exists\n");
+        printf("The number does not exist\n");
     }
 }
