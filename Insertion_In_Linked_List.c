@@ -10,8 +10,7 @@ struct student *start = NULL;
 
 void printLinkedList() {
     struct student *i = start;
-    while (i != NULL)
-    {
+    while (i != NULL) {
         printf("%d ->", i->data);
         i = i->next;
     }
@@ -23,7 +22,7 @@ void insertBegin() {
     scanf("%d", &n);
 
     struct student *newNode;
-    newNode = (struct student * )malloc(sizeof(struct student));
+    newNode = (struct student *)malloc(sizeof(struct student));
     newNode->data = n;
     if (start == NULL) {
         newNode->next = NULL;
@@ -32,12 +31,42 @@ void insertBegin() {
         newNode->next = start;
         start = newNode;
     }
-    
+}
+
+void insertEnd() {
+    int n;
+    printf("Enter number to insert end: ");
+    scanf("%d", &n);
+
+    struct student *newNode;
+    newNode = (struct student *)malloc(sizeof(struct student));
+    newNode->data = n;
+    newNode->next = NULL;
+
+    struct student *i;
+    i = start;
+
+    if (i == NULL) {
+        start = newNode;
+    } else {
+        while (i->next != NULL) {
+            i = i->next;
+        }
+        i->next = newNode;
+    }
 }
 
 int main() {
     // insertBegin();
     // insertBegin();
     insertBegin();
+    insertBegin();
+    insertBegin();
+    insertEnd();
+    insertEnd();
+    insertEnd();
+    // insertEnd();
+    // insertEnd();
+    // insertEnd();
     printLinkedList();
 }
