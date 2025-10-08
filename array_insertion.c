@@ -27,8 +27,7 @@ int main() {
     printf("\n");
 
     for (int i = n ; i >= idx ; i--) {
-        int temp = arr[i - 1];
-        arr[i] = temp;
+        arr[i] = arr[i - 1];
     }
     arr[idx] = num;
 
