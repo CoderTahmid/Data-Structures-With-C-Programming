@@ -56,6 +56,18 @@ void insertEnd() {
     }
 }
 
+void insertAny() {
+    int n;
+    printf("Enter number to insert anywhere: ");
+    scanf("%d", &n);
+
+    struct student *newNode;
+    newNode = (struct student * )malloc(sizeof(struct student));
+    newNode->data = n;
+    newNode->next = NULL;
+
+}
+
 int main() {
     // insertBegin();
     // insertBegin();

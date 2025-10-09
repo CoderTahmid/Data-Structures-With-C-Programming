@@ -23,6 +23,6 @@ int main() {
     printf("s1 id: %d s1 name: %s\n", s1->id, s1->name);
     printf("s2 id: %d s2 name: %s\n", s2->id, s2->name);
     printf("s3 id: %d s3 name: %s\n", s3->id, s3->name);
-
+    //fff 
     return 0;
 }
