@@ -3,13 +3,13 @@
 
 struct student {
     int data;
-    struct student *next;
+    struct student* next;
 };
 
-struct student *start = NULL;
+struct student* start = NULL;
 
 void printLinkedList() {
-    struct student *i = start;
+    struct student* i = start;
     while (i != NULL) {
         printf("%d ->", i->data);
         i = i->next;
@@ -21,8 +21,8 @@ void insertBegin() {
     printf("Enter a number to insert begin: ");
     scanf("%d", &n);
 
-    struct student *newNode;
-    newNode = (struct student *)malloc(sizeof(struct student));
+    struct student* newNode;
+    newNode = (struct student*)malloc(sizeof(struct student));
     newNode->data = n;
     if (start == NULL) {
         newNode->next = NULL;
@@ -38,12 +38,12 @@ void insertEnd() {
     printf("Enter number to insert end: ");
     scanf("%d", &n);
 
-    struct student *newNode;
-    newNode = (struct student *)malloc(sizeof(struct student));
+    struct student* newNode;
+    newNode = (struct student*)malloc(sizeof(struct student));
     newNode->data = n;
     newNode->next = NULL;
 
-    struct student *i;
+    struct student* i;
     i = start;
 
     if (i == NULL) {
@@ -57,28 +57,38 @@ void insertEnd() {
 }
 
 void insertAny() {
-    int n;
+    int n, pos;
     printf("Enter number to insert anywhere: ");
     scanf("%d", &n);
+    printf("Enter the number after which you want to insert: ");
+    scanf("%d", &pos);
 
-    struct student *newNode;
-    newNode = (struct student * )malloc(sizeof(struct student));
+    struct student* newNode;
+    newNode = (struct student*)malloc(sizeof(struct student));
     newNode->data = n;
     newNode->next = NULL;
 
+    struct student* i = start;
+
+    if (i == NULL) {
+        start = newNode;
+    } else {
+        while (i->data != post) {
+            i = i->next;
+        }
+        newNode->next = i->next;
+        i->next = newNode;
+    }
 }
 
 int main() {
-    // insertBegin();
-    // insertBegin();
     insertBegin();
     insertBegin();
     insertBegin();
     insertEnd();
     insertEnd();
     insertEnd();
-    // insertEnd();
-    // insertEnd();
-    // insertEnd();
+    insertAny();
+    insertAny();
     printLinkedList();
 }

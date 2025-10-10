@@ -1,92 +1,41 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-struct student {
-    int data;
-    struct student *next;
-};
-
-struct student *start = NULL;
-
-void printLinkedList() {
-    struct student *i = start;
-    while (i != NULL) {
-        printf("%d ->", i->data);
-        i = i->next;
-    }
-}
-
-void insertBegin() {
-    int n;
-    printf("Enter a number to insert begin: ");
-    scanf("%d", &n);
-
-    struct student *newNode;
-    newNode = (struct student *)malloc(sizeof(struct student));
-    newNode->data = n;
-    if (start == NULL) {
-        newNode->next = NULL;
-        start = newNode;
-    } else {
-        newNode->next = start;
-        start = newNode;
-    }
-}
-
-void insertEnd() {
-    int n;
-    printf("Enter number to insert end: ");
-    scanf("%d", &n);
-
-    struct student *newNode;
-    newNode = (struct student *)malloc(sizeof(struct student));
-    newNode->data = n;
-    newNode->next = NULL;
-
-    struct student *i;
-    i = start;
-
-    if (i == NULL) {
-        start = newNode;
-    } else {
-        while (i->next != NULL) {
-            i = i->next;
-        }
-        i->next = newNode;
-    }
-}
-
-void insertAny() {
-    int n;
-    printf("Enter number to insert anywhere: ");
-    scanf("%d", &n);
-
-    struct student *newNode;
-    newNode = (struct student * )malloc(sizeof(struct student));
-    newNode->data = n;
-    newNode->next = NULL;
-    
-    struct student *i = start;
-    
-    if (i == NULL) {
-        start = newNode;
-    } else {
-        
-    }
-
-}
 
 int main() {
-    // insertBegin();
-    // insertBegin();
-    insertBegin();
-    insertBegin();
-    insertBegin();
-    insertEnd();
-    insertEnd();
-    insertEnd();
-    // insertEnd();
-    // insertEnd();
-    // insertEnd();
-    printLinkedList();
+    int n, num, idx;
+
+    printf("Enter you array size : ");
+    scanf("%d", &n);
+
+    n++;
+    int arr[n];
+    printf("Enter your array : ");
+    for (int i = 0 ; i < n - 1; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the number you want to insert : ");
+    scanf("%d", &num);
+
+    printf("Enter the index where you want to insert the number : ");
+    scanf("%d", &idx);
+    printf("\n");
+
+    printf("Before insertion your array is : ");
+    for (int i = 0 ; i < n - 1; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    for (int i = n ; i >= idx ; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[idx] = num;
+
+    printf("After insertion your array is : ");
+    for (int i = 0 ; i < n ; i++) {
+        printf("%d ", arr[i]);
+    }
+
+
+    return 0;
 }
