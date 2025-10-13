@@ -18,7 +18,7 @@ void printLinkedList() {
 
 void insertBegin() {
     int n;
-    printf("Enter a number to insert begin: ");
+    printf("Enter number to insert begin: ");
     scanf("%d", &n);
 
     struct student* newNode;
@@ -73,7 +73,7 @@ void insertAny() {
     if (i == NULL) {
         start = newNode;
     } else {
-        while (i->data != post) {
+        while (i->data != pos) {
             i = i->next;
         }
         newNode->next = i->next;
@@ -82,13 +82,9 @@ void insertAny() {
 }
 
 int main() {
-    insertBegin();
-    insertBegin();
-    insertBegin();
-    insertEnd();
-    insertEnd();
-    insertEnd();
     insertAny();
-    insertAny();
+    insertEnd();
+    insertBegin();
+    insertBegin();
     printLinkedList();
 }
