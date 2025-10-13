@@ -37,6 +37,23 @@ void deleteFirstNode() {
     }
 }
 
+void deleteLastNode() {
+    struct node* i = start;
+
+    if (i == NULL) {
+        printf("There's nothing to delete...\n");
+    } else if (start->next == NULL) {
+        printf("First node deleted...\n");
+        start = NULL;
+    } else {
+        printf("Deleting last node...\n");
+        while (i->next->next != NULL) {
+            i = i->next;
+        }
+        i->next = NULL;
+    }
+}
+
 void printLinkedList() {
     struct node* i = start;
 
@@ -50,8 +67,8 @@ int main() {
     insertBegin();
     insertBegin();
     insertBegin();
-    // deleteLastNode();
-    deleteFirstNode();
-    deleteFirstNode();
+    deleteLastNode();
+    // deleteFirstNode();
+    // deleteFirstNode();
     printLinkedList();
 }
