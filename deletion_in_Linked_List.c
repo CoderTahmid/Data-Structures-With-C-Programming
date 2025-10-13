@@ -54,6 +54,40 @@ void deleteLastNode() {
     }
 }
 
+void deleteAnyNode() {
+    struct node* i = start;
+
+    if (i == NULL) {
+        printf("There's nothing to delete...\n");
+    } else if (i->next == NULL) {
+        printf("Deleting the first node...\n");
+        start = NULL;
+    } else {
+        int n, c = 0;
+        printf("Enter the node's data part you want to insert: ");
+        scanf("%d", &n);
+
+        if (i == NULL) {
+            printf("The given number is not present in this linked list\n");
+        } else if (i->data == n) {
+            printf("Deleting the first node...\n");
+            start = start->next;
+        } else {
+            printf("Deleting the node which contain %d...\n", n);
+
+            while (i->next->data != n) {
+                i = i->next;
+            }
+
+            if (i->next->data == n && i->next->next == NULL) {
+                i->next = NULL;
+            } else {
+                i->next = i->next->next;
+            }
+        }
+    }
+}
+
 void printLinkedList() {
     struct node* i = start;
 
@@ -67,7 +101,8 @@ int main() {
     insertBegin();
     insertBegin();
     insertBegin();
-    deleteLastNode();
+    deleteAnyNode();
+    // deleteLastNode();
     // deleteFirstNode();
     // deleteFirstNode();
     printLinkedList();
