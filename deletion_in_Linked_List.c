@@ -64,7 +64,7 @@ void deleteAnyNode() {
         start = NULL;
     } else {
         int n;
-        printf("Enter the node's data part you want to insert: ");
+        printf("Enter the node's data part you want to Delete: ");
         scanf("%d", &n);
 
         if (i == NULL) {
@@ -93,6 +93,7 @@ void printLinkedList() {
 }
 
 int main() {
+    insertBegin();
     insertBegin();
     insertBegin();
     insertBegin();
