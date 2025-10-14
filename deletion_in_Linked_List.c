@@ -63,7 +63,7 @@ void deleteAnyNode() {
         printf("Deleting the first node...\n");
         start = NULL;
     } else {
-        int n, c = 0;
+        int n;
         printf("Enter the node's data part you want to insert: ");
         scanf("%d", &n);
 
@@ -78,12 +78,7 @@ void deleteAnyNode() {
             while (i->next->data != n) {
                 i = i->next;
             }
-
-            if (i->next->data == n && i->next->next == NULL) {
-                i->next = NULL;
-            } else {
-                i->next = i->next->next;
-            }
+            i->next = i->next->next;
         }
     }
 }
