@@ -10,15 +10,15 @@ struct node* start = NULL;
 
 void insertBegin() {
     int n;
-    printf("Enter a number to insert begin: ");
+    printf("Enter number to insert begin: ");
     scanf("%d", &n);
 
-    struct node* newNode = (struct node*)malloc(sizeof(struct node));
-
+    struct node* newNode;
+    newNode = (struct node*)malloc(sizeof(struct node));
     newNode->data = n;
-    newNode->next = NULL;
 
     if (start == NULL) {
+        newNode->next = NULL;
         start = newNode;
     } else {
         newNode->next = start;
@@ -26,27 +26,74 @@ void insertBegin() {
     }
 }
 
-void deleteFirstNode() {
-    if (start == NULL) {
-        printf("There's nothing to delete...\n");
-    } else if (start->next == NULL) {
-        printf("The first node deleted\n");
-        start = NULL;
+void insertEnd() {
+    int n;
+    printf("Enter number to insert end: ");
+    scanf("%d", &n);
+
+    struct node* newNode;
+    newNode = (struct node*)malloc(sizeof(struct node));
+
+    newNode->data = n;
+    newNode->next = NULL;
+    struct node* i = start;
+
+    if (i == NULL) {
+        start = newNode;
     } else {
+        while (i->next != NULL) {
+            i = i->next;
+        }
+        i->next = newNode;
+    }
+}
+
+void insertAny() {
+    int n, pos;
+    printf("Enter a number to insert anywhere: ");
+    scanf("%d", &n);
+
+    struct node* newNode;
+    newNode = (struct node*)malloc(sizeof(struct node));
+
+    newNode->data = n;
+
+    struct node* i = start;
+
+    if (i == NULL) {
+        newNode->next = NULL;
+        start = newNode;
+    } else {
+        printf("Enter the number after which you want to insert: ");
+        scanf("%d", &pos);
+
+        while (i->data != pos) {
+            i = i->next;
+        }
+        newNode->next = i->next;
+        i->next = newNode;
+    }
+}
+
+void deleteFirst() {
+    if (start == NULL) {
+        printf("There's nothing to delete: \n");
+    } else {
+        printf("Deleting the first node...\n");
         start = start->next;
     }
 }
 
-void deleteLastNode() {
-    struct node* i = start;
-
-    if (i == NULL) {
-        printf("There's nothing to delete...\n");
+void deleteLast() {
+    if (start == NULL) {
+        printf("There's nothing to delete... \n");
     } else if (start->next == NULL) {
-        printf("First node deleted...\n");
+        printf("Deleting the last node...\n");
         start = NULL;
     } else {
-        printf("Deleting last node...\n");
+        printf("Deleting the last node...\n");
+        struct node* i = start;
+
         while (i->next->next != NULL) {
             i = i->next;
         }
@@ -60,27 +107,28 @@ void deleteAnyNode() {
     if (i == NULL) {
         printf("There's nothing to delete...\n");
     } else if (i->next == NULL) {
-        printf("Deleting the first node...\n");
+        printf("There's only one node, so deleting it...\n");
         start = NULL;
     } else {
-        int n, c = 0;
-        printf("Enter the node's data part you want to insert: ");
+        int n;
+        printf("Enter the node's data part you want to Delete: ");
         scanf("%d", &n);
 
-        if (i == NULL) {
-            printf("The given number is not present in this linked list\n");
-        } else if (i->data == n) {
+        if (i->data == n) {
             printf("Deleting the first node...\n");
             start = start->next;
         } else {
-            printf("Deleting the node which contain %d...\n", n);
-
+            int count = 0;
             while (i->next->data != n) {
                 i = i->next;
+                if (i->next == NULL) {
+                    count++;
+                    break;
+                }
             }
 
-            if (i->next->data == n && i->next->next == NULL) {
-                i->next = NULL;
+            if (count) {
+                printf("%d does not present in the linked list\n", n);
             } else {
                 i->next = i->next->next;
             }
@@ -91,9 +139,13 @@ void deleteAnyNode() {
 void printLinkedList() {
     struct node* i = start;
 
-    while (i != NULL) {
-        printf("%d -->", i->data);
-        i = i->next;
+    if (i == NULL) {
+        printf("Here's nothing to print..\n");
+    } else {
+        while (i != NULL) {
+            printf("%d ->", i->data);
+            i = i->next;
+        }
     }
 }
 
@@ -101,9 +153,10 @@ int main() {
     insertBegin();
     insertBegin();
     insertBegin();
+    insertBegin();
+    insertBegin();
+    deleteFirst();
     deleteAnyNode();
-    // deleteLastNode();
-    // deleteFirstNode();
-    // deleteFirstNode();
+    deleteLast();
     printLinkedList();
 }
