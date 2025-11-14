@@ -8,11 +8,13 @@ struct node {
 
 struct node* start = NULL;
 
-void enqueue() {
+void push() {
     int n;
-    printf("Enter number insert in the queue: ");
+    printf("Enter number to insert in the stack: ");
     scanf("%d", &n);
+
     struct node* newNode = (struct node*)malloc(sizeof(struct node));
+
     newNode->data = n;
     newNode->next = NULL;
 
@@ -20,8 +22,6 @@ void enqueue() {
 
     if (i == NULL) {
         start = newNode;
-    } else if (i->next == NULL) {
-        start->next = newNode;
     } else {
         while (i->next != NULL) {
             i = i->next;
@@ -30,36 +30,36 @@ void enqueue() {
     }
 }
 
-void dequeue() {
+void pop() {
     struct node* i = start;
 
     if (i == NULL) {
-        printf("there's nothing to delete...\n");
+        printf("There's nothing to delete...\n");
     } else if (i->next == NULL) {
+        printf("There's only one item, so deleting it...\n");
         start = NULL;
     } else {
-        printf("applying dequeue function\n");
-        start = start->next;
+        printf("Popping one item from the stack...\n");
+        while (i->next->next != NULL) {
+            i = i->next;
+        }
+        i->next = NULL;
     }
 }
 
-void printLinkedList() {
+void printStack() {
     struct node* i = start;
 
-    if (i == NULL) {
-        printf("There's nothing to print...\n");
-    } else {
-        while (i != NULL) {
-            printf("%d -->", i->data);
-            i = i->next;
-        }
+    while (i != NULL) {
+        printf("%d -->", i->data);
+        i = i->next;
     }
 }
 
 int main() {
-    enqueue();
-    enqueue();
-    enqueue();
-    dequeue();
-    printLinkedList();
+    push();
+    push();
+    push();
+    pop();
+    printStack();
 }

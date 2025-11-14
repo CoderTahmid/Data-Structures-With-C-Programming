@@ -97,8 +97,8 @@ void deleteFirstNode() {
         printf("There's nothing to delete...\n");
     } else if (start->next == NULL) {
         printf("There's only one node, so deleteing it...\n");
-        start == NULL;
-        tail == NULL;
+        start = NULL;
+        tail = NULL;
     } else {
         printf("Deleteing the first node...\n");
         start->next->pre = NULL;
