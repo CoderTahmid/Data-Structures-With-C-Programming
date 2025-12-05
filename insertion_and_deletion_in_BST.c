@@ -54,16 +54,15 @@ struct node* deleteBST(struct node* root, int x) {
             free(root);
             return temp;
         } else {
-            struct node * temp = findmin(root->right);
+            struct node* temp = findmin(root->right);
 
             root->data = temp->data;
             root->right = deleteBST(root->right, temp->data);
         }
     }
-    
+
     return root;
 }
-
 
 void printInorder(struct node* root) {
     if (root == NULL) {
